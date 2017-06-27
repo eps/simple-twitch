@@ -1,5 +1,5 @@
 var accounts = ['freecodecamp', 'khuey', 'ogamingsc2', 'storbeck', 'terakilobyte', 'habathcx', 'RobotCaleb', 'thomasballinger', 'noobs2ninjas', 'beohoff', 'MedryBW', 'brunofin', 'comster404', 'quill18'];
-var logo = 'https://i.imgur.com/vPEp5RQ.png';
+var logo = './img/logo.png';
 var streams = 'https://api.twitch.tv/kraken/streams/';
 var channels = 'https://wind-bow.glitch.me/twitch-api/channels/';
 var users = 'https://wind-bow.glitch.me/twitch-api/users/';
@@ -19,11 +19,11 @@ function getUserInfo(currentName) {
     console.log(data);
     if (data.logo === null) {
       currentName = new Account(data.display_name, logo);
-      console.log('testing', currentName);
+      console.log('testing', currentName,logo);
     } else {
       currentName = new Account(data.display_name, data.logo);
     }
-    $("#streamList").append("<div><li><img src=" + data.logo + "></img>"+currentName.name+"</li></div>");
+    $("#streamList").append("<div><li><img src=" + currentName.logo + "></img>"+currentName.name+"</li></div>");
   })
   return currentName;
 }
