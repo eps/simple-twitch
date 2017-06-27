@@ -1,0 +1,23 @@
+html,
+body {
+    height: 100%;
+}
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+form {
+  margin-top: 100px;
+}
+
+#streamList li {
+  list-style: none;
+  border: 1px solid #dedede;
+  padding: 5px;
+}
+#streamList li img {
+  width: 50px;
+  height: 50px;
+}
