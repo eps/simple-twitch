@@ -6,10 +6,7 @@ body {
 .container {
   width: 700px;
   margin: 0 auto;
-}
-
-form {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .action-button li {
@@ -40,4 +37,16 @@ form {
 #streamList li h4 {
   float: left;
   margin-left: 10px;
+}
+
+.notification {
+  background-color: orange;
+}
+
+.online {
+  background-color: green;
+}
+
+.offline {
+  background-color: pink;
 }

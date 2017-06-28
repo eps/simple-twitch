@@ -33,10 +33,10 @@ function Account(name, logo){
 function getStreams(currentName) {
   $.getJSON(streams + currentName, function(data) {
       if (data.stream) {
-        status = true;
+        status = "online";
         getChannel(currentName, status);
       } else {
-        status = false;
+        status = "offline";
         getChannel(currentName, status);
       }
   })
@@ -55,9 +55,16 @@ function getChannel(currentName, status){
 }
 
 function cardDisplay(data, status) {
-  console.log(status);
   var card = "";
-
+  if (status === "online") {
+    card += '<p class="online">' + data.display_name + '</p>';
+    $('.online').addClass('active');
+  }
+  if (status === "offline") {
+    card += '<p class="offline">' + data.display_name + '</p>';
+    $('.offline').addClass('active');
+  }
+  return card;
 }
 
 
