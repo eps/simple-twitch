@@ -12,6 +12,7 @@
 </head>
 <body>
 
+  <div class="notification"></div>
   <div class="container">
     <form id="searchForm">
       <div class="input-group col-md-12">
@@ -24,8 +25,15 @@
       </div>
     </form>
 
-
-    <div id="streamList"></div>
+    <div class="action-button">
+      <ul>
+        <li id="all" class="active"><a onclick="allClicked()">All</a></li>
+        <li id="online"><a onclick="onlineClicked()">Online</a></li>
+        <li id="offline"><a onclick="offlineClicked()">Offline</a></li>
+      </ul>
+    </div>
+    <div id="streamList">
+    </div>
 
   </div>
 

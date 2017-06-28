@@ -12,12 +12,32 @@ form {
   margin-top: 100px;
 }
 
-#streamList li {
+.action-button li {
   list-style: none;
+  display: inline-block;
+}
+.action-button ul {
+  margin: 0;
+  padding: 0;
+}
+
+#streamList {
+  margin-top: 10px;
+}
+#streamList li {
   border: 1px solid #dedede;
+  display: inline-block;
+  list-style: none;
   padding: 5px;
+  width: 100%;
 }
 #streamList li img {
+  float: left;
   width: 50px;
   height: 50px;
+}
+
+#streamList li h4 {
+  float: left;
+  margin-left: 10px;
 }
