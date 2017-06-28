@@ -67,9 +67,20 @@ function cardDisplay(data, status) {
   return card;
 }
 
-
+function allClicked() {
+  $('#all a').addClass('is-active');
+  $('#online a').removeClass('is-active');
+  $('#offline a').removeClass('is-active');
+}
 
 function onlineClicked() {
-  console.log('clicked');
-  $('#online').addClass('active');
+  $('#online a').addClass('is-active');
+  $('#offline a').removeClass('is-active');
+  $('#all a').removeClass('is-active');
+}
+
+function offlineClicked() {
+  $('#offline a').addClass('is-active');
+  $('#online a').removeClass('is-active');
+  $('#all a').removeClass('is-active');
 }

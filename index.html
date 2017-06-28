@@ -13,28 +13,29 @@
 <body>
 
   <div class="container">
-    <div class="notification"></div>
-    <form id="searchForm">
-      <div class="input-group col-md-12">
-        <input id="search" type="text" class="form-control input-lg" placeholder="enter twitch username" />
-        <span class="input-group-btn">
-          <button class="btn btn-info btn-lg" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
-        </span>
+    <div class="container-bg">
+      <div class="notification"></div>
+      <form id="searchForm">
+        <div class="input-group col-md-12">
+          <input id="search" type="text" class="form-control input-lg" placeholder="enter twitch username" />
+          <span class="input-group-btn">
+            <button class="btn btn-info btn-lg" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </span>
+        </div>
+      </form>
+
+      <div class="action-button">
+        <ul>
+          <li id="all"><a onclick="allClicked()">All</a></li>
+          <li id="online"><a onclick="onlineClicked()">Online</a></li>
+          <li id="offline"><a onclick="offlineClicked()">Offline</a></li>
+        </ul>
       </div>
-    </form>
-
-    <div class="action-button">
-      <ul>
-        <li id="all"><a onclick="allClicked()">All</a></li>
-        <li id="online"><a onclick="onlineClicked()">Online</a></li>
-        <li id="offline"><a onclick="offlineClicked()">Offline</a></li>
-      </ul>
+      <div id="streamList">
+      </div>
     </div>
-    <div id="streamList">
-    </div>
-
   </div>
 
 

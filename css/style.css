@@ -1,12 +1,33 @@
 html,
 body {
-    height: 100%;
+  height: 100%;
+  background-color: #ada397;
 }
 
 .container {
   width: 700px;
   margin: 0 auto;
   margin-top: 50px;
+}
+
+.container-bg {
+  background-color: #bdcebe;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.action-button a {
+  font-family: Helvetica, sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.action-button a:hover {
+  color: #e6e2d3;
 }
 
 .action-button li {
@@ -39,14 +60,17 @@ body {
   margin-left: 10px;
 }
 
+.is-active {
+  color: #e6e2d3 !important;
+}
 .notification {
   background-color: orange;
 }
 
 .online {
-  background-color: green;
+  background-color: #b5e7a0;
 }
 
 .offline {
-  background-color: pink;
+  background-color: #eca1a6;
 }
