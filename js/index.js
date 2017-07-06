@@ -6,66 +6,45 @@ var users = 'https://wind-bow.glitch.me/twitch-api/users/';
 
 $(document).ready(function() {
   accounts.forEach(getStreams);
+  // accounts.forEach(cardDisplay);
 });
 
-function Account(name, logo){
-  this.name = name;
-  this.logo = logo;
+function getChannel(isOnline, currentName){
+  $.getJSON(channels + currentName, function(data) {
+    if(data.status === 422) {
+     $('.notification').append(currentName, 'is not closed!');
+    } else if (data.status === 404) {
+      $('.notification').append(currentName, 'is not an active user!');
+    }
+    cardDisplay(isOnline, data);
+  });
 }
-
-
-// function getUserInfo(currentName) {
-//   $.getJSON(users + currentName + '?callback=?', function(data) {
-//     console.log(data);
-//     if (data.logo === null) {
-//       currentName = new Account(data.display_name, logo);
-//       console.log('testing', currentName,logo);
-//     } else {
-//       currentName = new Account(data.display_name, data.logo);
-//     }
-//     $("#streamList").append(
-//       "<li><img src=" + currentName.logo + "></img>"+"<h4>"+currentName.name+"</h4>"+"</li>"
-//     );
-//   })
-//   return currentName;
-// }
 
 function getStreams(currentName) {
   $.getJSON(streams + currentName, function(data) {
       if (data.stream) {
-        status = "online";
-        getChannel(currentName, status);
+        // if stream is currently live, pass in true
+        // status = data.stream.stream_type;
+        getChannel(true, currentName)
       } else {
-        status = "offline";
-        getChannel(currentName, status);
+        status = "Offline";
+        getChannel(false, currentName);
       }
   })
 }
 
-
-function getChannel(currentName, status){
-  $.getJSON(channels + currentName, function(data) {
-    if (data.status === 404) {
-      $('.notification').append(data.message);
-    } else {
-      var card = cardDisplay(data, status);
-      $('#streamList').append(card);
-    }
-  })
-}
-
-function cardDisplay(data, status) {
-  var card = "";
-  if (status === "online") {
-    card += '<p class="online">' + data.display_name + '</p>';
+function cardDisplay(isOnline, data) {
+  if (isOnline) {
+    $('#streamBody').append("<div class='card online'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Online</div></div>");
     $('.online').addClass('active');
   }
-  if (status === "offline") {
-    card += '<p class="offline">' + data.display_name + '</p>';
+  else {
+    //stream is offline
+    $('#streamBody').append("<div class='card offline'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Offline</div></div>");
     $('.offline').addClass('active');
   }
-  return card;
 }
+
 
 function allClicked() {
   $('#all a').addClass('is-active');
@@ -74,9 +53,10 @@ function allClicked() {
 }
 
 function onlineClicked() {
-  $('#online a').addClass('is-active');
+  $('#streamBody').empty();
   $('#offline a').removeClass('is-active');
   $('#all a').removeClass('is-active');
+  $('#online a').addClass('is-active');
 }
 
 function offlineClicked() {

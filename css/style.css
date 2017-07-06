@@ -1,7 +1,7 @@
 html,
 body {
   height: 100%;
-  background-color: #ada397;
+  background-color: #636398;
 }
 
 .container {
@@ -11,12 +11,21 @@ body {
 }
 
 .container-bg {
-  background-color: #bdcebe;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.twitch-header {
+  background-color: #636398;
+  color: white;
 }
 
 p {
   margin: 0;
   padding: 0;
+}
+
+.action-button {
+  background-color: #636398;
 }
 
 .action-button a {
@@ -39,9 +48,16 @@ p {
   padding: 0;
 }
 
+.card {
+  padding: 10px;
+  border: 1px solid grey;
+  overflow: hidden;
+}
+
 #streamList {
   margin-top: 10px;
 }
+
 #streamList li {
   border: 1px solid #dedede;
   display: inline-block;
@@ -60,6 +76,17 @@ p {
   margin-left: 10px;
 }
 
+.streamLogo {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.streamTitle {
+  padding-left: 10px;
+  float: left;
+}
+
 .is-active {
   color: #e6e2d3 !important;
 }
@@ -73,4 +100,8 @@ p {
 
 .offline {
   background-color: #eca1a6;
+}
+
+.streamStatus {
+  float: right;
 }
