@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/d25a7ea956.js"></script>
   <script src="js/index.js"></script>
 </head>
 <body>
@@ -15,20 +16,28 @@
   <div class="container">
     <div class="container-bg">
       <div class="notification"></div>
-      <form id="searchForm">
-        <div class="input-group col-md-12">
-          <input id="search" type="text" class="form-control input-lg" placeholder="enter twitch username" />
-          <span class="input-group-btn">
-            <button class="btn btn-info btn-lg" type="submit">
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </span>
-        </div>
-      </form>
 
-      <div class="header">
-        <h1 class="twitch-header">Twitch API</h1>
+      <div class="twitch-header">
+        <div class="twitch-content">
+          <i class="fa fa-twitch fa-5x" aria-hidden="true"></i>
+          <h1>Twitch API</h1>
+        </div>
       </div>
+
+
+      <div class="wrapper">
+        <form id="search-form">
+          <div class="input-group col-md-12">
+            <input type="text" class="search-string form-control" placeholder="Enter twitch username" />
+            <span class="input-group-btn">
+              <button class="btn btn-danger" type="submit">
+                  <span class=" glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+
       <div class="action-button">
         <ul>
           <li id="all"><a onclick="allClicked()">All</a></li>
@@ -36,7 +45,7 @@
           <li id="offline"><a onclick="offlineClicked()">Offline</a></li>
         </ul>
       </div>
-      <div id="streamBody">
+      <div id="stream-body">
       </div>
     </div>
   </div>

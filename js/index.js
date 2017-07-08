@@ -7,6 +7,13 @@ var users = 'https://wind-bow.glitch.me/twitch-api/users/';
 $(document).ready(function() {
   accounts.forEach(getStreams);
   // accounts.forEach(cardDisplay);
+
+  $('#search-form').submit(function(e){
+    e.preventDefault();
+    var searchInput = $('.search-string').val();
+    getStreams(searchInput);
+    $('#search-form').trigger('reset');
+  });
 });
 
 function getChannel(isOnline, currentName){
@@ -35,12 +42,12 @@ function getStreams(currentName) {
 
 function cardDisplay(isOnline, data) {
   if (isOnline) {
-    $('#streamBody').append("<div class='card online'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Online</div></div>");
+    $('#stream-body').append("<div class='card online'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Online</div></div>");
     $('.online').addClass('active');
   }
   else {
     //stream is offline
-    $('#streamBody').append("<div class='card offline'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Offline</div></div>");
+    $('#stream-body').append("<div class='card offline'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Offline</div></div>");
     $('.offline').addClass('active');
   }
 }
@@ -50,17 +57,22 @@ function allClicked() {
   $('#all a').addClass('is-active');
   $('#online a').removeClass('is-active');
   $('#offline a').removeClass('is-active');
+  $('#stream-body .offline').show();
+  $('#stream-body .online').show();
 }
 
 function onlineClicked() {
-  $('#streamBody').empty();
+  // $('#stream-body').empty();
   $('#offline a').removeClass('is-active');
   $('#all a').removeClass('is-active');
   $('#online a').addClass('is-active');
+  $('#stream-body .offline').hide();
 }
 
 function offlineClicked() {
   $('#offline a').addClass('is-active');
   $('#online a').removeClass('is-active');
   $('#all a').removeClass('is-active');
+  $('#stream-body .offline').show();
+  $('#stream-body .online').hide();
 }
