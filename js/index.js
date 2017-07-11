@@ -25,7 +25,7 @@ function getChannel(isOnline, currentName){
     } else if (data.logo === null) {
       data.logo = logo;
     }
-    cardDisplay(isOnline, data, logo);
+      cardDisplay(isOnline, data, logo);
   });
 }
 
@@ -33,28 +33,24 @@ function getStreams(currentName) {
   $.getJSON(streams + currentName, function(data) {
       if (data.stream) {
         // if stream is currently live, pass in true
-        // status = data.stream.stream_type;
         getChannel(true, currentName)
       } else {
         status = "Offline";
         getChannel(false, currentName);
       }
-      // if (data.stream.channel.logo === null) {
-      //   data.stream.channel.logo = logo;
-      //   console.log(logo);
-      // }
   })
 }
 
 function cardDisplay(isOnline, data, logo) {
-  if (isOnline) {
-    $('#stream-body').append("<div class='card online'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Online</div></div>");
-    $('.online').addClass('active');
-  }
-  else {
-    //stream is offline
-    $('#stream-body').append("<div class='card offline'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Offline</div></div>");
-    $('.offline').addClass('active');
+  if (!data.error) {
+    if (isOnline) {
+      $('#stream-body').append("<div class='card online'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Online</div></div>");
+      $('.online').addClass('active');
+    }
+    else {
+      $('#stream-body').append("<div class='card offline'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Offline</div></div>");
+      $('.offline').addClass('active');
+    }
   }
 }
 
