@@ -22,8 +22,10 @@ function getChannel(isOnline, currentName){
      $('.notification').append(currentName, 'is not closed!');
     } else if (data.status === 404) {
       $('.notification').append(currentName, 'is not an active user!');
+    } else if (data.logo === null) {
+      data.logo = logo;
     }
-    cardDisplay(isOnline, data);
+    cardDisplay(isOnline, data, logo);
   });
 }
 
@@ -37,10 +39,14 @@ function getStreams(currentName) {
         status = "Offline";
         getChannel(false, currentName);
       }
+      // if (data.stream.channel.logo === null) {
+      //   data.stream.channel.logo = logo;
+      //   console.log(logo);
+      // }
   })
 }
 
-function cardDisplay(isOnline, data) {
+function cardDisplay(isOnline, data, logo) {
   if (isOnline) {
     $('#stream-body').append("<div class='card online'><div class='streamLogo'><img class='img-responsive' src="+data.logo+"></img></div><div class='streamTitle'><a href="+data.url+'>'+data.display_name+"</a></div><div class='streamStatus'>Online</div></div>");
     $('.online').addClass('active');
